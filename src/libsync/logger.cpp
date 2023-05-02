@@ -118,6 +118,9 @@ bool Logger::isLoggingToFile() const
 
 void Logger::doLog(QtMsgType type, const QMessageLogContext &ctx, const QString &message)
 {
+    if(!_isEnabled)
+        return;
+
     const QString msg = qFormatLogMessage(type, ctx, message);
 #if defined(Q_OS_WIN) && defined(QT_DEBUG)
     // write logs to Output window of Visual Studio
@@ -215,6 +218,12 @@ void Logger::setLogFlush(bool flush)
 {
     _doFileFlush = flush;
 }
+
+void setLogEnable(bool enable)
+{
+    _isEnabled = enable;
+}
+
 
 void Logger::setLogDebug(bool debug)
 {

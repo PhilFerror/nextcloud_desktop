@@ -590,6 +590,7 @@ void Application::setupLogging()
 {
     // might be called from second instance
     auto logger = Logger::instance();
+    logger->setLogEnable(ConfigFile().LogEnabled())
     logger->setLogFile(_logFile);
     if (_logFile.isEmpty()) {
         logger->setLogDir(_logDir.isEmpty() ? ConfigFile().logDir() : _logDir);

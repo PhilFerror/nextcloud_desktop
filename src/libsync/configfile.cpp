@@ -82,6 +82,7 @@ static constexpr char logDirC[] = "logDir";
 static constexpr char logDebugC[] = "logDebug";
 static constexpr char logExpireC[] = "logExpire";
 static constexpr char logFlushC[] = "logFlush";
+static constexpr char logEnabledC[] = "logEnabled";
 static constexpr char showExperimentalOptionsC[] = "showExperimentalOptions";
 static constexpr char clientVersionC[] = "clientVersion";
 
@@ -1059,6 +1060,18 @@ void ConfigFile::setLogFlush(bool enabled)
 {
     QSettings settings(configFile(), QSettings::IniFormat);
     settings.setValue(QLatin1String(logFlushC), enabled);
+}
+
+bool ConfigFile::LogEnabled() const
+{
+    QSettings settings(configFile(), QSettings::IniFormat);
+    return settings.value(QLatin1String(logEnabledC), true).toBool();
+}
+
+void ConfigFile::setLogEnabled(bool enabled)
+{
+    QSettings settings(configFile(), QSettings::IniFormat);
+    settings.setValue(QLatin1String(logEnabledC), enabled);
 }
 
 bool ConfigFile::showExperimentalOptions() const

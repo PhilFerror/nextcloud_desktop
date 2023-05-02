@@ -55,9 +55,11 @@ public:
 
     void setLogFlush(bool flush);
 
+    void setLogEnable(bool enable);
+    
     bool logDebug() const { return _logDebug; }
     void setLogDebug(bool debug);
-
+  
     /** Returns where the automatic logdir would be */
     QString temporaryFolderLogDirPath() const;
 
@@ -102,6 +104,7 @@ private:
     void setLogFileNoLock(const QString &name);
 
     QFile _logFile;
+    bool _isEnabled = true;
     bool _doFileFlush = false;
     int _logExpire = 0;
     bool _logDebug = false;

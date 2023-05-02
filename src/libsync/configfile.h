@@ -111,6 +111,9 @@ public:
     [[nodiscard]] bool logFlush() const;
     void setLogFlush(bool enabled);
 
+    [[nodiscard]] bool logEnabled() const;
+    void setlogEnabled(bool enabled);
+
     // Whether experimental UI options should be shown
     [[nodiscard]] bool showExperimentalOptions() const;
 
